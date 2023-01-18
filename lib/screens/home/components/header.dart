@@ -11,6 +11,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HeaderLogo extends StatelessWidget {
   const HeaderLogo({Key? key}) : super(key: key);
@@ -24,20 +25,23 @@ class HeaderLogo extends StatelessWidget {
           Scrollable.ensureVisible(headerItems[0].key.currentContext!);
         },
         child: RichText(
-            text: TextSpan(children: [
-          TextSpan(
-              text: "benjiDev",
-              style: GoogleFonts.oswald(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold)),
-          TextSpan(
-              text: '.',
-              style: GoogleFonts.oswald(
-                  color: kPrimaryColor,
-                  fontSize: 36.0,
-                  fontWeight: FontWeight.bold))
-        ])),
+          text: TextSpan(
+            children: [
+              TextSpan(
+                  text: "benjiDev",
+                  style: GoogleFonts.oswald(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold)),
+              TextSpan(
+                  text: '.',
+                  style: GoogleFonts.oswald(
+                      color: kPrimaryColor,
+                      fontSize: 36.0,
+                      fontWeight: FontWeight.bold))
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -45,6 +49,14 @@ class HeaderLogo extends StatelessWidget {
 
 class HeaderRow extends StatelessWidget {
   const HeaderRow({Key? key}) : super(key: key);
+
+  _lauchUrl() async {
+    try {
+      launchUrl(Uri.parse("https://technewsprovider.com"));
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,14 +78,15 @@ class HeaderRow extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 5.0),
                           child: TextButton(
-                              onPressed: headerItems[index].onTap,
-                              child: Text(
-                                headerItems[index].title!,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.bold),
-                              )),
+                            onPressed:  headerItems[index].onTap,
+                            child: Text(
+                              headerItems[index].title!,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
                       )
                     : mouseRegionHeaderItem(context, index)),

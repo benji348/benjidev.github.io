@@ -35,6 +35,13 @@ class CvSection extends StatelessWidget {
             1,
             text: 'About mE',
           ),
+          Text(
+            intro,
+            style: const TextStyle(color: kCaptionColor),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
           LayoutBuilder(
             builder: (_context, constraints) {
               return ResponsiveGridView.builder(

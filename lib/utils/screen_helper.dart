@@ -23,15 +23,16 @@ class ScreenHelper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints boxConstraints) {
-      if (boxConstraints.maxWidth >= 1200.0) {
-        return desktop!;
-      } else if (boxConstraints.maxWidth >= 800.0 &&
-          boxConstraints.maxWidth < 1200.0) {
-        return tablet!;
-      } else {
-        return mobile!;
-      }
-    });
+      builder: (BuildContext context, BoxConstraints boxConstraints) {
+        if (boxConstraints.maxWidth >= 1200.0) {
+          return desktop!;
+        } else if (boxConstraints.maxWidth >= 800.0 &&
+            boxConstraints.maxWidth < 1200.0) {
+          return tablet!;
+        } else {
+          return mobile!;
+        }
+      },
+    );
   }
 }

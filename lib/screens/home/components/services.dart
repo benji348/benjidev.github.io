@@ -38,22 +38,23 @@ class _ServicesState extends State<Services> {
           LayoutBuilder(
             builder: (_context, constraints) {
               return ResponsiveGridView.builder(
-                  itemCount: services.length,
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  alignment: Alignment.topCenter,
-                  gridDelegate: ResponsiveGridDelegate(
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20,
-                      childAspectRatio: 1,
-                      maxCrossAxisExtent: ScreenHelper.isTablet(context) ||
-                              ScreenHelper.isMobile(context)
-                          ? constraints.maxWidth / 2.0
-                          : 250.0),
-                  itemBuilder: (context, index) {
-                    return ServiceCard(index: index);
-                  });
+                itemCount: services.length,
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                alignment: Alignment.topCenter,
+                gridDelegate: ResponsiveGridDelegate(
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                    childAspectRatio: 1,
+                    maxCrossAxisExtent: ScreenHelper.isTablet(context) ||
+                            ScreenHelper.isMobile(context)
+                        ? constraints.maxWidth / 2.0
+                        : 250.0),
+                itemBuilder: (context, index) {
+                  return ServiceCard(index: index);
+                },
+              );
             },
           ),
           const SizedBox(

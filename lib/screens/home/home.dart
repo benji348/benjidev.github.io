@@ -8,13 +8,10 @@ import 'package:benji_dev/screens/home/components/footer.dart';
 import 'package:benji_dev/screens/home/components/header.dart';
 import 'package:benji_dev/screens/home/components/portofolio.dart';
 import 'package:benji_dev/screens/home/components/services.dart';
-import 'package:benji_dev/screens/home/components/skills.dart';
 import 'package:benji_dev/screens/home/components/testimonials.dart';
 import 'package:benji_dev/utils/constants.dart';
 import 'package:benji_dev/utils/globals.dart';
-import 'package:benji_dev/utils/screen_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -74,10 +71,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: Globals.scaffoldKey,
-        endDrawer: Drawer(
-          child: SafeArea(
-              child: Padding(
+      key: Globals.scaffoldKey,
+      endDrawer: Drawer(
+        child: SafeArea(
+          child: Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
             child: ListView.separated(
@@ -92,14 +89,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 28.0),
                             child: TextButton(
-                                onPressed: headerItems[index].onTap,
-                                child: Text(
-                                  headerItems[index].title!,
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13.0,
-                                      fontWeight: FontWeight.bold),
-                                )),
+                              onPressed: headerItems[index].onTap,
+                              child: Text(
+                                headerItems[index].title!,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ),
                         )
                       : mouseRegionHeaderItem(context, index);
@@ -110,80 +108,86 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   );
                 },
                 itemCount: headerItems.length),
-          )),
-        ),
-        floatingActionButton: ScaleTransition(
-          scale: _animation,
-          child: FloatingActionButton(
-            onPressed: () {
-              Scrollable.ensureVisible(headerItems[0].key.currentContext!,
-                  duration: const Duration(microseconds: 600));
-            },
-            child: const Icon(Icons.arrow_upward),
           ),
         ),
-        body: Column(children: [
+      ),
+      floatingActionButton: ScaleTransition(
+        scale: _animation,
+        child: FloatingActionButton(
+          onPressed: () {
+            Scrollable.ensureVisible(headerItems[0].key.currentContext!,
+                duration: const Duration(microseconds: 600));
+          },
+          child: const Icon(Icons.arrow_upward),
+        ),
+      ),
+      body: Column(
+        children: [
           const Header(),
           Expanded(
-              child: SingleChildScrollView(
-                  controller: _scrollController,
-                  child: Column(
-                    children: [
-                      Container(
-                        key: headerItems[0].key,
-                        child: Carousel(),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      VisibilityDetector(
-                        key: Key("About"),
-                        onVisibilityChanged: (visibilityInfo) {
-                          double visiblePercentage =
-                              visibilityInfo.visibleFraction * 100;
-                          if (visiblePercentage > 10) {
-                            _controller.forward();
-                          }
-                        },
-                        child: CvSection(
-                          key: headerItems[1].key,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Container(
-                        key: headerItems[2].key,
-                        child: const Services(),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Container(
-                        key: headerItems[3].key,
-                        child: const Portofolio(),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Container(
-                        key: headerItems[4].key,
-                        child: const Testimonials(),
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Footer(
-                        key: headerItems[5].key,
-                      ),
-                      if (banner == null)
-                        const SizedBox(
-                          height: 50,
-                        )
-                      else
-                        SizedBox(height: 50, child: AdWidget(ad: banner!))
-                    ],
-                  )))
-        ]));
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                children: [
+                  Container(
+                    key: headerItems[0].key,
+                    child: Carousel(),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  VisibilityDetector(
+                    key: const Key("About"),
+                    onVisibilityChanged: (visibilityInfo) {
+                      double visiblePercentage =
+                          visibilityInfo.visibleFraction * 100;
+                      if (visiblePercentage > 10) {
+                        _controller.forward();
+                      }
+                    },
+                    child: CvSection(
+                      key: headerItems[1].key,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    key: headerItems[2].key,
+                    child: const Services(),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    key: headerItems[3].key,
+                    child: const Portofolio(),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Container(
+                    key: headerItems[4].key,
+                    child: const Testimonials(),
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  Footer(
+                    key: headerItems[5].key,
+                  ),
+                  if (banner == null)
+                    const SizedBox(
+                      height: 50,
+                    )
+                  else
+                    SizedBox(height: 50, child: AdWidget(ad: banner!))
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

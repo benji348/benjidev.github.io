@@ -21,6 +21,8 @@ class HeaderItemModel {
 
 final List<HeaderItemModel> headerItems = [
   HeaderItemModel(title: 'Home', key: GlobalKey(), isSelected: true),
+  //je vais implementer la logic plus tard
+  // HeaderItemModel(title: 'Blog', key: GlobalKey()),
   HeaderItemModel(title: 'About', key: GlobalKey()),
   HeaderItemModel(title: 'Services', key: GlobalKey()),
   HeaderItemModel(title: 'Portofolio', key: GlobalKey()),

@@ -24,30 +24,33 @@ class Carousel extends StatelessWidget {
             child: CarouselSlider(
               carouselController: carouselController,
               items: List.generate(
-                  1,
-                  (index) => Builder(builder: (context) {
-                        return Container(
-                          constraints: BoxConstraints(
-                              minHeight: carouselConatinerHeight),
-                          child: ScreenHelper(
-                            desktop: _buildDesktop(
-                              context,
-                              caroureslItems[index].text,
-                              caroureslItems[index].image,
-                            ),
-                            tablet: _buidMidScreen(
-                              context,
-                              caroureslItems[index].text,
-                              caroureslItems[index].image,
-                            ),
-                            mobile: _buidMobileScreen(
-                              context,
-                              caroureslItems[index].text,
-                              caroureslItems[index].image,
-                            ),
-                          ),
-                        );
-                      })),
+                1,
+                (index) => Builder(
+                  builder: (context) {
+                    return Container(
+                      constraints:
+                          BoxConstraints(minHeight: carouselConatinerHeight),
+                      child: ScreenHelper(
+                        desktop: _buildDesktop(
+                          context,
+                          caroureslItems[index].text,
+                          caroureslItems[index].image,
+                        ),
+                        tablet: _buidMidScreen(
+                          context,
+                          caroureslItems[index].text,
+                          caroureslItems[index].image,
+                        ),
+                        mobile: _buidMobileScreen(
+                          context,
+                          caroureslItems[index].text,
+                          caroureslItems[index].image,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
               options: CarouselOptions(
                 // autoPlay: true,
                 viewportFraction: 1,

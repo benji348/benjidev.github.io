@@ -37,6 +37,13 @@ final List<FooterItem> footerItems = [
     text2: "",
   )
 ];
+onLaunchUrl(uri) async {
+  try {
+    launchUrl(Uri.parse(uri));
+  } catch (e) {
+    debugPrint(e.toString());
+  }
+}
 
 class Footer extends StatelessWidget {
   const Footer({Key? key}) : super(key: key);
@@ -76,7 +83,7 @@ Widget _buildUi(double width, BuildContext context) {
                               ? constraints.maxWidth / 2.0 - 20.0
                               : constraints.maxWidth / 4.0 - 20.0,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               if (footerItem.title == 'Social Network')
                                 Column(
@@ -105,65 +112,32 @@ Widget _buildUi(double width, BuildContext context) {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
-                                        footerIcon(() async {
-                                          try {
-                                            launch(
-                                                'weixin://dl/chat?Ben-Ampouala',
-                                                forceWebView: false,
-                                                enableJavaScript: true);
-                                          } catch (e) {
-                                            debugPrint(e.toString());
-                                          }
-                                        }, FlutterIcons.wechat_ant,
-                                            Colors.green),
-                                        footerIcon(() async {
-                                          try {
-                                            launch(
-                                                'http://wa.me/+8613125216235',
-                                                enableJavaScript: true,
-                                                forceWebView: false);
-                                          } catch (e) {
-                                            debugPrint(e.toString());
-                                          }
-                                        }, FlutterIcons.whatsapp_faw,
-                                            const Color(0xFF39F500)),
-                                        footerIcon(() async {
-                                          try {
-                                            launch('http://m.me/ben.ampouala',
-                                                forceWebView: false,
-                                                enableJavaScript: true);
-                                          } catch (e) {
-                                            debugPrint(e.toString());
-                                          }
-                                        },
-                                            FlutterIcons
-                                                .facebook_messenger_faw5d,
-                                            Colors.blue),
                                         footerIcon(
-                                          () async {
-                                            try {
-                                              launch(
-                                                  'https://www.instagram.com/benji_pif/',
-                                                  enableJavaScript: true,
-                                                  forceWebView: false);
-                                            } catch (e) {
-                                              debugPrint(e.toString());
-                                            }
-                                          },
-                                          FlutterIcons.instagram_ant,
-                                          const Color(0xFFF7682A),
+                                            onTap: () => onLaunchUrl(
+                                                'weixin://dl/chat?Ben-Ampouala'),
+                                            iconData: FlutterIcons.wechat_ant,
+                                            color: Colors.green),
+                                        footerIcon(
+                                            onTap: () => onLaunchUrl(
+                                                'http://wa.me/+8613125216235'),
+                                            iconData: FlutterIcons.whatsapp_faw,
+                                            color: const Color(0xFF39F500)),
+                                        footerIcon(
+                                            onTap: () => onLaunchUrl(
+                                                'https://twitter.com/benjiDev19'),
+                                            iconData: FlutterIcons.twitter_ant,
+                                            color: Colors.blue),
+                                        footerIcon(
+                                          onTap: () => onLaunchUrl(
+                                              'https://www.instagram.com/benji_pif/'),
+                                          iconData: FlutterIcons.instagram_ant,
+                                          color: const Color(0xFFF7682A),
                                         ),
-                                        footerIcon(() async {
-                                          try {
-                                            launch(
-                                                'https://www.linkedin.com/in/benjamin-ampouala-83a153201/',
-                                                forceWebView: false,
-                                                enableJavaScript: true);
-                                          } catch (e) {
-                                            debugPrint(e.toString());
-                                          }
-                                        }, FlutterIcons.linkedin_faw,
-                                            Colors.blue)
+                                        footerIcon(
+                                          onTap: () => onLaunchUrl(
+                                              'https://medium.com/@benjaminampouala'),
+                                          iconData: FlutterIcons.medium_ent,
+                                        )
                                       ],
                                     ),
                                   ],
@@ -222,7 +196,7 @@ Widget _buildUi(double width, BuildContext context) {
                   const Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "Copyright (c) 2021 Ben AMPOUALA. All rights Reserved",
+                      "Copyright (c) 2023 Ben AMPOUALA. All rights Reserved",
                       style: TextStyle(
                         color: kCaptionColor,
                       ),
@@ -279,7 +253,7 @@ Widget _buildUi(double width, BuildContext context) {
   );
 }
 
-Widget footerIcon(onTap, iconData, color) {
+Widget footerIcon({onTap, iconData, color}) {
   return InkWell(
     onTap: onTap,
     child: Icon(

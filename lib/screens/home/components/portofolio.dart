@@ -14,49 +14,51 @@ class Portofolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: double.infinity,
-        child: ScreenHelper(
-          desktop: _portofolioBuilt(context, 1000.0),
-          tablet: _portofolioBuilt(context, 760.0),
-          mobile: _portofolioBuilt(
-              context, MediaQuery.of(context).size.width * 0.9),
-        ));
+      width: double.infinity,
+      child: ScreenHelper(
+        desktop: _portofolioBuilt(context, 1000.0),
+        tablet: _portofolioBuilt(context, 760.0),
+        mobile:
+            _portofolioBuilt(context, MediaQuery.of(context).size.width * 0.9),
+      ),
+    );
   }
 
   Widget _portofolioBuilt(BuildContext context, double width) {
     return ResponsiveWrapper(
-        maxWidth: width,
-        minWidth: width,
-        defaultScale: false,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TitleBuilt(3, text: 'Portofolio'),
-            ScreenHelper.isMobile(context) &&
-                    MediaQuery.of(context).size.width < 600
-                ? CarouselSlider(
-                    items: List.generate(
-                        portodata.length,
-                        (index) => PortofolioCard(
-                              index: index,
-                              press: () {},
-                            )),
-                    options: CarouselOptions(
-                      viewportFraction: 1,
-                      autoPlay: true,
-                      // scrollPhysics: NeverScrollableScrollPhysics(),
-                      // height: MediaQuery.of(context).size.height*
-                    ))
-                : Wrap(
-                    spacing: kDefaultPadding,
-                    runSpacing: kDefaultPadding * 2,
-                    children: List.generate(portodata.length,
-                        (index) => PortofolioCard(index: index, press: () {}))),
-            const SizedBox(
-              height: 50,
-            )
-          ],
-        ));
+      maxWidth: width,
+      minWidth: width,
+      defaultScale: false,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const TitleBuilt(3, text: 'Portofolio'),
+          ScreenHelper.isMobile(context) &&
+                  MediaQuery.of(context).size.width < 600
+              ? CarouselSlider(
+                  items: List.generate(
+                      portodata.length,
+                      (index) => PortofolioCard(
+                            index: index,
+                            press: () {},
+                          )),
+                  options: CarouselOptions(
+                    viewportFraction: 1,
+                    autoPlay: true,
+                    // scrollPhysics: NeverScrollableScrollPhysics(),
+                    // height: MediaQuery.of(context).size.height*
+                  ))
+              : Wrap(
+                  spacing: kDefaultPadding,
+                  runSpacing: kDefaultPadding * 2,
+                  children: List.generate(portodata.length,
+                      (index) => PortofolioCard(index: index, press: () {}))),
+          const SizedBox(
+            height: 50,
+          )
+        ],
+      ),
+    );
   }
 }

@@ -15,21 +15,24 @@ List<DesighProcessModel> designs = [
   DesighProcessModel(
       icon: Icons.mobile_friendly_rounded,
       subtitle:
-          'Developping full applictions on Android & Ios, I built some applications for clients with Flutter & Dart',
+          'Developping full applictions on Android & Ios, I build cross plat-form applicaions for my clients with Flutter & Dart',
       title: 'Develop'),
   DesighProcessModel(
       icon: Icons.code,
       subtitle:
-          'I started programming in the year of  2019 with C language, yeah I know it\'s recent but I put all my energy, hard work and my determination',
+          'Software Developer with 3 years of experience in developing full cross-platform applications using Flutter and Dart.Currently learning Python in the final year of a Master\'s degree in Computer Science and Technology.',
       title: 'Experience'),
   DesighProcessModel(
       icon: Icons.design_services,
       subtitle:
-          'Creating some awesome UI design for mobile apps and some Websites, developing fully fonctional apps and websites ',
+          'Strong background in UI design and experience with Dart and Flutter framework. Creating some awesome UI design for mobile apps and some Websites, developing fully fonctional apps and websites ',
       title: 'UI Design'),
   DesighProcessModel(
       icon: Feather.hard_drive,
       subtitle:
-          'Having some knowledge for these programming languages:Java, Kotlin and Dart, some will be added in the due time',
+          'Having some knowledge for these programming languages:Java, Kotlin and Dart, Currently learning Python in the final year of a Master\'s degree',
       title: 'Back end'),
 ];
+
+String intro =
+    "I am a software developer with over 3 years of experience, proficient in a variety of programming languages and technologies. As a developer, I have delivered high-quality code on time and within budget, and excel at problem-solving and collaborating with cross-functional teams. I am highly organized, detail-oriented, and have strong communication, content writter, and time management skills. I am constantly seeking to learn and grow as a developer.";
